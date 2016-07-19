@@ -15,7 +15,28 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
+ <!--  <build>
     <finalName>test_jenkins</finalName>
-  </build>
+  </build> -->
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.2.2.RELEASE</spring.version>
+		<finalName>test_jenkins</finalName>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcat</server>
+					<username>deploy</username>
+					<password>deploy123456</password>
+					<path>/${finalName}</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
+
